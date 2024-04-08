@@ -1,1 +1,23 @@
+# Ignore node_modules folder
 node_modules
+
+# Ignore all .env files
+*.env
+
+# Do not ignore .env.example file
+!.env.example
+
+# Ignore dist folder
+dist
+build
+
+
+# Ignore coverage folder
+coverage
+
+# Ignore Logs related folder and files
+logs
+*.log
+
+# OS
+.DS_Store
