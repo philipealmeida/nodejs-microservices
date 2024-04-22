@@ -16,12 +16,15 @@
     "forceConsistentCasingInFileNames": true,
     "paths": {
       "@/*": ["/*"],
+      "@types/*": ["types/*"],
+      "@utils/*": ["utils/*"],
       "@config/*": ["config/*"],
-      "@controllers/*": ["controllers/*"],
-      "@middlewares/*": ["middlewares/*"],
       "@models/*": ["models/*"],
       "@routes/*": ["routes/*"],
-      "@utils/*": ["utils/*"]
+      "@services/*": ["services/*"],
+      "@controllers/*": ["controllers/*"],
+      "@validations/*": ["validations/*"],
+      "@middlewares/*": ["middlewares/*"]
     }
   },
   "include": ["src"],
