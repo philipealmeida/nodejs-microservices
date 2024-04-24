@@ -6,7 +6,14 @@ const asyncMiddleware =
     try {
       await fn(req, res, next);
     } catch (error) {
-      next(error);
+      return !res.headersSent
+        ? res.status(500).json({
+            message:
+              error instanceof Error
+                ? error.message
+                : 'An unexpected error occurred',
+          })
+        : next(error);
     }
   };
 

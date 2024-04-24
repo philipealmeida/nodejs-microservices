@@ -15,7 +15,7 @@ export const ProductService = {
     const existingProduct = await Product.findOne({ name });
 
     if (existingProduct) {
-      throw new Error('Product with this name already exists');
+      throw new Error(`Product with name ${name} already exists`);
     }
 
     return await Product.create(productData);

@@ -1,5 +1,9 @@
 import { z, ZodSchema } from 'zod';
 
+export interface IProductErrorMessage {
+  message: string;
+}
+
 export interface IProduct {
   name: string;
   quantity: number;
