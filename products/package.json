@@ -3,12 +3,12 @@
   "author": "philipealmeida",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "index.js",
   "license": "ISC",
   "keywords": [],
   "scripts": {
     "build": "rimraf ./build && tsc",
-    "start": "npm run build && node ./build/main.js",
+    "start": "npm run build && node ./build/index.js",
     "dev": "nodemon",
     "test": "jest"
   },
