@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import helmet from 'helmet';
 import express from 'express';
 import 'module-alias/register';
+import bodyParser from 'body-parser';
 import logger from '@utils/logger.js';
 import { connectDB } from '@config/db';
 import swaggerUi from 'swagger-ui-express';
@@ -9,7 +10,6 @@ import swaggerSpec from '@config/swagger.js';
 import mainRoute from '@routes/main.route.js';
 import { rateLimiter } from '@middlewares/rateLimiter';
 import errorHandler from '@middlewares/errorHandler.js';
-import bodyParser from 'body-parser';
 
 // Load environment variables from .env file
 dotenv.config();
