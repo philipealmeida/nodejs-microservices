@@ -20,6 +20,10 @@ const swaggerDefinition = {
   },
   servers: [
     {
+      url: 'https://nodejs-microservices-production.up.railway.app/',
+      description: 'Railway server',
+    },
+    {
       url: 'http://localhost:3000',
       description: 'Development server',
     },
