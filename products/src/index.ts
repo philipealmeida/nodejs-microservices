@@ -9,7 +9,7 @@ import swaggerSpec from '@config/swagger.js';
 import mainRoute from '@routes/main.route.js';
 import { rateLimiter } from '@middlewares/rateLimiter';
 import errorHandler from '@middlewares/errorHandler.js';
-const bodyParser = require('body-parser');
+import bodyParser from 'body-parser';
 
 // Load environment variables from .env file
 dotenv.config();
