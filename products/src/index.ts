@@ -9,6 +9,7 @@ import swaggerSpec from '@config/swagger.js';
 import mainRoute from '@routes/main.route.js';
 import { rateLimiter } from '@middlewares/rateLimiter';
 import errorHandler from '@middlewares/errorHandler.js';
+const bodyParser = require('body-parser');
 
 // Load environment variables from .env file
 dotenv.config();
@@ -16,9 +17,22 @@ dotenv.config();
 // Initialize Express application
 const app = express();
 
-// Apply Helmet and Rate Limiter middlewares for security enhancements
+/*
+ * Security enhancements
+ * Apply Helmet,
+ * Rate and
+ * Body Parser Limiter middlewares
+ */
 app.use(helmet());
 app.use(rateLimiter);
+app.use(bodyParser.json({ limit: '1mb' }));
+app.use(
+  bodyParser.urlencoded({
+    limit: '1mb',
+    extended: false,
+    parameterLimit: 5,
+  })
+);
 
 // Register middleware for parsing request bodies
 app.use(express.json());
