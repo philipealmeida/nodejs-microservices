@@ -1,12 +1,13 @@
-import 'module-alias/register';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
 import express from 'express';
-import { connectDB } from '@config/db';
+import 'module-alias/register';
 import logger from '@utils/logger.js';
-import mainRoute from '@routes/main.route.js';
+import { connectDB } from '@config/db';
 import swaggerUi from 'swagger-ui-express';
 import swaggerSpec from '@config/swagger.js';
+import mainRoute from '@routes/main.route.js';
+import { rateLimiter } from '@middlewares/rateLimiter';
 import errorHandler from '@middlewares/errorHandler.js';
 
 // Load environment variables from .env file
@@ -15,8 +16,9 @@ dotenv.config();
 // Initialize Express application
 const app = express();
 
-// Apply Helmet middleware for security enhancements
+// Apply Helmet and Rate Limiter middlewares for security enhancements
 app.use(helmet());
+app.use(rateLimiter);
 
 // Register middleware for parsing request bodies
 app.use(express.json());
