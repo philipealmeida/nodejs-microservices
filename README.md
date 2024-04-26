@@ -1,4 +1,4 @@
-# Node.js Microservice, Portfolio
+# Node.js Microservices, Portfolio
 
 This repository serves as a collection of public microservices based on Node.js technology, intended for laboratory and portfolio purposes. It showcases various Node.js microservices that can be used as references or starting points for building scalable and maintainable service-oriented architectures.
 
