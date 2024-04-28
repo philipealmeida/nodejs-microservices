@@ -14,6 +14,9 @@ export const applySecurityMiddlewares = (app: Express): void => {
   // Protects the app from some well-known web vulnerabilities by setting HTTP headers appropriately
   app.use(helmet());
 
+  // Trust the first proxy in front of the app (for Swagger UI)
+  app.set('trust proxy', 1);
+
   // Limits repeated requests to public APIs and/or endpoints such as password reset
   app.use(requestRateLimiter);
 
