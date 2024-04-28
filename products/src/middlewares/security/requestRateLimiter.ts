@@ -3,7 +3,7 @@ import rateLimit from 'express-rate-limit';
 const FIFTEEN_MINUTES_IN_MILLISECONDS = 15 * 60 * 1000;
 const MAX_REQUESTS_PER_WINDOW = 12;
 
-export const rateLimiter = rateLimit({
+export const requestRateLimiter = rateLimit({
   windowMs: FIFTEEN_MINUTES_IN_MILLISECONDS,
   max: MAX_REQUESTS_PER_WINDOW,
 });

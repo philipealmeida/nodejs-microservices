@@ -1,15 +1,16 @@
 import dotenv from 'dotenv';
-import helmet from 'helmet';
+
 import express from 'express';
 import 'module-alias/register';
-import bodyParser from 'body-parser';
+
 import logger from '@utils/logger.js';
 import { connectDB } from '@config/db';
 import swaggerUi from 'swagger-ui-express';
 import swaggerSpec from '@config/swagger.js';
 import mainRoute from '@routes/main.route.js';
-import { rateLimiter } from '@middlewares/rateLimiter';
-import errorHandler from '@middlewares/errorHandler.js';
+import errorHandler from '@middlewares/http/errorHandler.middleware.js';
+
+import { applySecurityMiddlewares } from '@middlewares/security/security.middleware';
 
 // Load environment variables from .env file
 dotenv.config();
@@ -17,22 +18,8 @@ dotenv.config();
 // Initialize Express application
 const app = express();
 
-/*
- * Security enhancements
- * Apply Helmet,
- * Rate and
- * Body Parser Limiter middlewares
- */
-app.use(helmet());
-app.use(rateLimiter);
-app.use(bodyParser.json({ limit: '1mb' }));
-app.use(
-  bodyParser.urlencoded({
-    limit: '1mb',
-    extended: false,
-    parameterLimit: 5,
-  })
-);
+// Apply security middlewares
+applySecurityMiddlewares(app);
 
 // Register middleware for parsing request bodies
 app.use(express.json());

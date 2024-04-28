@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import sendResponse from '@utils/responseHandler.js';
 import { formatErrorDetails } from '@utils/validations';
 import { ProductService } from '@services/product.service';
-import asyncMiddleware from '@middlewares/asyncMiddleware.js';
+import asyncMiddleware from '@middlewares/http/async.middleware.js';
 import { IdParamSchema, ProductBodySchema } from '../types/product.type';
 
 export const getProducts = asyncMiddleware(
