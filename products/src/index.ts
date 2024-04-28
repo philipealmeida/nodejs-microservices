@@ -1,15 +1,12 @@
 import dotenv from 'dotenv';
-
 import express from 'express';
 import 'module-alias/register';
-
 import logger from '@utils/logger.js';
 import { connectDB } from '@config/db';
 import swaggerUi from 'swagger-ui-express';
 import swaggerSpec from '@config/swagger.js';
 import mainRoute from '@routes/main.route.js';
 import errorHandler from '@middlewares/http/errorHandler.middleware.js';
-
 import { applySecurityMiddlewares } from '@middlewares/security/security.middleware';
 
 // Load environment variables from .env file

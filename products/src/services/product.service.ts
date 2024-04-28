@@ -1,5 +1,6 @@
-import Product from '@models/product.model.js';
+import logger from '@utils/logger.js';
 import { IProduct } from 'types/product.type';
+import Product from '@models/product.model.js';
 
 export const ProductService = {
   getProducts: async () => {
@@ -15,7 +16,9 @@ export const ProductService = {
     const existingProduct = await Product.findOne({ name });
 
     if (existingProduct) {
-      throw new Error(`Product with name ${name} already exists`);
+      const errorMessage = `Product with name ${name} already exists`;
+      logger.error(errorMessage);
+      throw new Error(errorMessage);
     }
 
     return await Product.create(productData);
